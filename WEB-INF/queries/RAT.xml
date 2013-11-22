@@ -1,0 +1,21 @@
+<schema name="FL">
+<cube name="claims">
+	<table name="Claims" />
+	<dimension name="Insurance">
+		<hierarchy hasAll="true">
+			<level name="Status" uniqueMembers="true" column="INSCONAME"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="Time" type="TimeDimension">
+		<hierarchy hasAll="true">
+			<level name="Year" column="Year" uniqueMembers="true" levelType="TimeYears"/>
+			<level name="Month" column="Month" uniqueMembers="false" levelType="TimeMonths"
+				ordinalColumn="Month" nameColumn="MonthName"/>
+			<level name="Day" column="day" uniqueMembers="false" levelType="TimeDays"/>
+		</hierarchy>
+	</dimension>
+	<measure name="Count" column="CLAIMID" aggregator="count"/>
+	<measure name="Billed" column="Billed" aggregator="sum"/>
+	<measure name="Paid" column="Paid" aggregator="sum"/>
+</cube>
+</schema>

@@ -1,0 +1,67 @@
+<!-- 
+	 This is a schema for the soon to be removed Chimes DB
+	 Cube List
+	 	1 - transactions
+		2 - claims
+-->
+<schema name="Chimes">
+
+	<cube name="transactions">
+		<table name="Transactions" />
+		<Dimension name="Type">
+			<Hierarchy hasAll="true">
+				<level name="Type" uniqueMembers="true" column="lineType"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Source">
+			<Hierarchy hasAll="true">
+				<level name="Class" uniqueMembers="true" column="lineSource"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Clinic">
+			<Hierarchy hasAll="true">
+				<level name="Clinic" uniqueMembers="true" column="Clinic"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Time" type="TimeDimension">
+			<Hierarchy hasAll="true">
+				<level name="Year" column="year" uniqueMembers="true" levelType="TimeYears"/>
+				<level name="Month" column="month" uniqueMembers="false" levelType="TimeMonths"
+					ordinalColumn="month" nameColumn="monthName"/>
+				<level name="Day" column="day" uniqueMembers="false" levelType="TimeDays"/>
+			</Hierarchy>
+		</Dimension>
+		<measure name="absAmount" column="absAmount" aggregator="sum"/>
+		<measure name="LineCount" column="PROC_LOGID" aggregator="count"/>
+		<measure name="Amount" column="netAmount" aggregator="sum"/>
+	</cube>
+
+	<cube name="claims">
+		<table name="CLAIMS" />
+		<Dimension name="Type">
+			<Hierarchy hasAll="true">
+				<level name="Type" uniqueMembers="true" column="Status"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Status">
+			<Hierarchy hasAll="true">
+				<level name="Status" uniqueMembers="true" column="STATUS"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="Clinic">
+			<Hierarchy hasAll="true">
+				<level name="Clinic" uniqueMembers="true" column="Clinic"/>
+			</Hierarchy>
+		</Dimension>
+		<Dimension name="year">
+			<Hierarchy hasAll="true">
+				<level name="Year" uniqueMembers="true" column="DateReceivedYear"/>
+			</Hierarchy>
+		</Dimension>
+		<measure name="LineCount" column="CLAIMID" aggregator="count"/>
+		<measure name="LineAmount" column="lineAmount" aggregator="sum"/>
+		<measure name="ClaimAmount" column="ClaimAmount" aggregator="sum"/>
+		<measure name="PaidAmount" column="paidAmount" aggregator="sum"/>
+	</cube>
+
+</schema>
