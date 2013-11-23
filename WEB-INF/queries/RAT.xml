@@ -1,4 +1,28 @@
 <schema name="FL">
+<cube name="patients">
+	<table name="Patients" />
+	<dimension name="Sex">
+		<hierarchy hasAll="true">
+			<level name="Sex" uniqueMembers="true" column="Sex"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="City">
+		<hierarchy hasAll="true">
+			<level name="City" uniqueMembers="true" column="CITY"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="State">
+		<hierarchy hasAll="true">
+			<level name="State" uniqueMembers="true" column="STATE"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="Zip">
+		<hierarchy hasAll="true">
+			<level name="Zip" uniqueMembers="true" column="ZIP"/>
+		</hierarchy>
+	</dimension>
+	<measure name="Count" column="PATID" aggregator="count"/>
+</cube>
 <cube name="claims">
 	<table name="Claims" />
 	<dimension name="Insurance">

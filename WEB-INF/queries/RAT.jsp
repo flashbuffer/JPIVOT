@@ -9,7 +9,7 @@
 
 	SELECT
 		{Measures} ON COLUMNS
-	FROM CLAIMS
+	FROM patients
 
 </jp:mondrianQuery>
 
