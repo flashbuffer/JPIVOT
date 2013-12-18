@@ -23,6 +23,7 @@
 	  <li><a href="jpivot.jsp?query=transactions">Transactions</a></li>
 	  <li><a href="jpivot.jsp?query=claims">Claims</a></li>
 	  <li><a href="jpivot.jsp?query=RAT">RAT</a></li>
+	  <li><a href="jpivot.jsp?query=financials">Financials</a></li>
 	</ul>
 
 </body>

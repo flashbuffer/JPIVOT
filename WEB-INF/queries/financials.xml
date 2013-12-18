@@ -1,0 +1,32 @@
+<schema name="financials">
+<cube name="financials">
+	<table name="Financials" />
+	<dimension name="clinic">
+		<hierarchy hasAll="true">
+			<level name="clinic" uniqueMembers="true" column="Clinic"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="Category">
+		<hierarchy hasAll="true">
+			<level name="Category" uniqueMembers="true" column="Category"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="Type">
+		<hierarchy hasAll="true">
+			<level name="Type" uniqueMembers="true" column="Type"/>
+			<level name="SubType" uniqueMembers="false" column="SubType"/>
+		</hierarchy>
+	</dimension>
+	<dimension name="Time" type="TimeDimension">
+		<hierarchy hasAll="true">
+			<level name="Year" column="Year" uniqueMembers="true" levelType="TimeYears"/>
+			<level name="Month" column="Month" uniqueMembers="false" levelType="TimeMonths"
+				ordinalColumn="Month" nameColumn="MonthName"/>
+			<level name="Day" column="Day" uniqueMembers="false" levelType="TimeDays"/>
+		</hierarchy>
+	</dimension>
+	<measure name="Net" column="NetAmount" aggregator="sum"/>
+	<measure name="Count" column="PROC_LOGID" aggregator="count"/>
+	<measure name="Amount" column="Amount" aggregator="sum"/>
+</cube>
+</schema>
