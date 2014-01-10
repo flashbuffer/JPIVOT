@@ -8,10 +8,9 @@
 	catalogUri="/WEB-INF/queries/financials.xml">
 
 	SELECT
-		{type} ON COLUMNS,
-		{category} on ROWS
+		{measures} ON COLUMNS
 	FROM financials
 
 </jp:mondrianQuery>
 
-<c:set var="title01" scope="session">RAT CUBE</c:set>
+<c:set var="title01" scope="session">Financial Cube</c:set>

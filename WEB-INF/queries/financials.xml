@@ -1,7 +1,7 @@
 <schema name="financials">
 <cube name="financials">
 	<table name="Financials" />
-	<dimension name="clinic">
+	<dimension name="Clinic">
 		<hierarchy hasAll="true">
 			<level name="clinic" uniqueMembers="true" column="Clinic"/>
 		</hierarchy>
@@ -25,8 +25,8 @@
 			<level name="Day" column="Day" uniqueMembers="false" levelType="TimeDays"/>
 		</hierarchy>
 	</dimension>
+	<measure name="Amount" column="Amount" aggregator="sum"/>
 	<measure name="Net" column="NetAmount" aggregator="sum"/>
 	<measure name="Count" column="PROC_LOGID" aggregator="count"/>
-	<measure name="Amount" column="Amount" aggregator="sum"/>
 </cube>
 </schema>
